@@ -4,18 +4,21 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
- #include <QtWebView>
-
-
-
 #include "loader.h"
-#include "playlistplgn.h"
+#include <include/fileref.h>
+#include <include/tag.h>
+#include<QDebug>
+#include <atlstr.h>
+#include <QTextCodec>
+
+
+#include <include/toolkit/tstring.h>
 int main(int argc, char *argv[]) {
+
+
   QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
-
   QGuiApplication app(argc, argv);
-
   AppCore appCore; // Create the application core with signals and slots
 
   QQmlApplicationEngine engine;
@@ -35,6 +38,10 @@ int main(int argc, char *argv[]) {
       },
   Qt::QueuedConnection);
   engine.load(url);
+
+
+
+
 
 
 

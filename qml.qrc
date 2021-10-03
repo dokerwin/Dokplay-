@@ -13,5 +13,6 @@
         <file>Buttons/template_btn.qml</file>
         <file>Buttons/Prev_btn.qml</file>
         <file>Duration.qml</file>
+        <file>Buttons/MyIconButton.qml</file>
     </qresource>
 </RCC>

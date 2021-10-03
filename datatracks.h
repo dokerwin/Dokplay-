@@ -14,6 +14,7 @@
 #include <QColor>
 #include <QMediaPlayer>
 #include <QMediaMetaData>
+#include <QTimer>
 
 struct Data {
     bool operator == (const Data& lhs){ return this->name == lhs.name; }
@@ -50,15 +51,16 @@ public:
 
 
 public slots:
-    void duplicateData(int row);
+
     void removeData(int row);
+    void removeAllData();
     void refresh();
 
 
 
 private:
-
     QVector<Data> m_data;
+    QTimer *timer;
 
 };
 

@@ -11,7 +11,7 @@ import QtQuick 2.0
       Image {
           id: backgroundImage
           anchors.fill: parent
-          source: (button.enabled ? "file:///C:/Users/z.kulbachenko/Documents/Audioplayer-main/build-Audioplayer-Desktop_x86_windows_msvc2019_pe_32bit-Debug/image/setting.png" : "file:///C:/Users/z.kulbachenko/Documents/Audioplayer-main/build-Audioplayer-Desktop_x86_windows_msvc2019_pe_32bit-Debug/image/setting_1.png")
+          source: (button.enabled ? "qrc:/image/setting.png" : "qrc:/image/setting_1.png")
       }
 
       Text {
@@ -20,6 +20,10 @@ import QtQuick 2.0
           color: "white"
           font.bold: true
       }
+
+
+
+
 
       //Mouse area to react on click events
       MouseArea {
@@ -35,13 +39,14 @@ import QtQuick 2.0
 
                   }}
           onPressed: {
-              backgroundImage.source = "file:///C:/Users/z.kulbachenko/Documents/Audioplayer-main/build-Audioplayer-Desktop_x86_windows_msvc2019_pe_32bit-Debug/image/setting_pressed.png"
+              backgroundImage.source = "qrc:/image/setting_pressed.png"
 
           }
           onReleased: {
-              backgroundImage.source = (button.enabled ? "file:///C:/Users/z.kulbachenko/Documents/Audioplayer-main/build-Audioplayer-Desktop_x86_windows_msvc2019_pe_32bit-Debug/image/setting_1" : "file:///C:/Users/z.kulbachenko/Documents/Audioplayer-main/build-Audioplayer-Desktop_x86_windows_msvc2019_pe_32bit-Debug/image/setting.png")
+              backgroundImage.source = (button.enabled ? "qrc:/image/setting_1" : "qrc:/image/setting.png")
           }
       }
+
 
 
       Connections {

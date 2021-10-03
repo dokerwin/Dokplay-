@@ -15,10 +15,9 @@ Playlist::Playlist(std::initializer_list<QString> &list) {
 
 Playlist::Playlist()
 {
-    META = MetaData::getMetaData();
 
     amount_tracks = 0;
-
+   META = MetaData::getMetaData();
     init();
 }
 
@@ -60,35 +59,14 @@ void Playlist::fill(QString directory)
     QStringList filter;
     QList<QFileInfo> *fileInfo = new QList<QFileInfo>(dir->entryInfoList());
 
-qDebug()<<fileInfo->count();
     for (int i = 0; i < fileInfo->count(); i++)
     {
-
             if (fileInfo->at(i).fileName().contains(".mp3")|| fileInfo->at(i).fileName().contains(".flac") ){
                 qDebug()<<fileInfo->at(i).filePath();
                 amount_tracks++;
                 myData.setData(fileInfo->at(i).fileName(),fileInfo->at(i).filePath(),META->getDuration(fileInfo->at(i).filePath()));
-
         }
-
-            qDebug()<<i;
     }
-
-
-
-
-
-
-    QDir dire(directory);
-
-    // Load all files with the *.PNG extension
-    // (you can modify this to suit your needs.
-    QStringList imagesList = dire.entryList(QStringList("*.mp3"));
-
-     qDebug()<<imagesList.size()<<"size of elements sssssssssssssssssssssssssssss";
-
-
-
 }
 
 void Playlist::setFolders(QString folders)
@@ -109,9 +87,19 @@ bool Playlist::dublicates(QString line) {
         return false;
     }
 
-
     MyFile.close();
     return true;
+}
+
+void Playlist::clearPlaylist()
+{
+
+    QFile fout("output.json");
+    fout.open(QFile::WriteOnly | QFile::Truncate);
+    fout.close();
+    myData.removeAllData();
+
+    qDebug()<<"Clear playlist";
 }
 
 void Playlist::savePlaylist() {
@@ -127,7 +115,6 @@ void Playlist::savePlaylist() {
             out << el << endl;
         }
     }
-
     file.close();
 }
 
@@ -201,7 +188,5 @@ void Playlist::init()
 {
 
      Loader::DeserPlaylist("output.json",myData.get_data());
-     qDebug()<<myData.get_data().size()<<"SIZE AFTER INIT";
-
 
 }

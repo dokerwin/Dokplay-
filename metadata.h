@@ -4,8 +4,6 @@
 #include <QMediaMetaData>
 #include <QObject>
 #include <QCoreApplication>
-
-
 class MetaData:public QObject
 {
     Q_OBJECT
@@ -14,15 +12,10 @@ public:
     void operator=(const MetaData & other)= delete;
     static MetaData * getMetaData();
     qint64 getDuration(QString track);
-    int GetMetaData(QMediaPlayer *player);
 
-
-signals :
 private slots:
-    void onMediaStatusChanged(QMediaPlayer::MediaStatus status);
-   // static void on_durationchanged(qint64 duration);
 
-
+    static void on_durationchanged(qint64 duration);
 
 private:
 

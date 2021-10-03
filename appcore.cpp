@@ -139,7 +139,12 @@ void AppCore::setDirectory(QString directory)
 
 }
 
-int AppCore::getControlLevel() const
+void AppCore::clearPlaylist()
+{
+    playlist.clearPlaylist();
+}
+
+int AppCore::getControlLevel()
 {
     return controlLevel;
 }

@@ -24,6 +24,7 @@ public:
 
     void setFolders(QString folders); //set the folders with tracks
     bool dublicates(QString line);
+    void clearPlaylist();
     void savePlaylist();
     void savePlaylistPath();
     QString getPlayListFromFile();

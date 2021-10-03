@@ -1,12 +1,11 @@
 import QtQuick 2.12
-import QtQuick.Controls 2.12
+import QtQuick.Controls 2.5
 import QtQuick.Window 2.12
 import QtQuick.Dialogs 1.3
-import QtWebView 1.1
 import QtMultimedia 5.0
 import "Buttons/" as MyButton
 
-Window {
+ApplicationWindow {
     visible: true
     width: 780
     height: 480
@@ -77,7 +76,7 @@ Window {
         anchors.centerIn: parent
         fillMode: Image.PreserveAspectCrop
 
-        source: "file:///C:/Users/z.kulbachenko/Documents/Audioplayer-main/build-Audioplayer-Desktop_x86_windows_msvc2019_pe_32bit-Debug/image/icon.png"
+        source: "qrc:/image/icon.png"
         anchors.verticalCenterOffset: 4
         anchors.horizontalCenterOffset: -84
 
@@ -165,14 +164,6 @@ Window {
 */
 
 
-
-
-
-
-
-
-
-
     Label {
         id: volume_lbl
         x: 17
@@ -244,6 +235,7 @@ Window {
         y: 220
     }
 
+
     MyButton.Next_btn {
         x: 163
         y: 220
@@ -307,8 +299,6 @@ Window {
         width: 46
         height: 16
     }
-
-
 
 
 }

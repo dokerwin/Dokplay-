@@ -16,7 +16,14 @@ MyModel::MyModel(QObject *parent) :
     QAbstractListModel(parent)
 {
 
+    timer = new QTimer(this);
 
+
+       connect(timer, SIGNAL(timeout()),
+             this, SLOT(refresh()));
+
+       // msec
+       //timer->start(1000);
 
 }
 
@@ -70,18 +77,7 @@ void MyModel::setData(QString name,QString path, int duration)
 }
 //<-- slide
 
-void MyModel::duplicateData(int row)
-{
-    if (row < 0 || row >= m_data.count())
-        return;
 
-    const Data data = m_data[row];
-    const int rowOfInsert = row + 1;
-
-    beginInsertRows(QModelIndex(), rowOfInsert, rowOfInsert);
-    m_data.insert(rowOfInsert, data);
-    endInsertRows();
-}
 
 void MyModel::removeData(int row)
 {
@@ -93,6 +89,15 @@ void MyModel::removeData(int row)
     endRemoveRows();
 }
 
+void MyModel::removeAllData()
+{
+    beginRemoveRows(QModelIndex(),0,m_data.size()-1);
+    m_data.clear();
+    endRemoveRows();
+    refresh();
+
+}
+
 void MyModel::refresh()
 {
 
@@ -100,11 +105,9 @@ void MyModel::refresh()
     const QModelIndex startIndex = index(0, 0);
     const QModelIndex endIndex   = index(count, 0);
 
+   beginInsertRows(QModelIndex(), 0, m_data.size()-1);
 
-
-    beginInsertRows(QModelIndex(), 0, m_data.size());
-
-    endInsertRows();
+   endInsertRows();
 
     // ...but only the population field
     emit dataChanged(startIndex, endIndex, QVector<int>() << NameRole);

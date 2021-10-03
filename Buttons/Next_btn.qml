@@ -15,7 +15,7 @@ Item {
         id: backgroundImage
         anchors.fill: parent
 
-        source: "file:///C:/Users/z.kulbachenko/Documents/Audioplayer-main/build-Audioplayer-Desktop_x86_windows_msvc2019_pe_32bit-Debug/image/next.png"
+        source: "qrc:/image/next.png"
         anchors.rightMargin: 0
         anchors.bottomMargin: 0
         anchors.leftMargin: 0

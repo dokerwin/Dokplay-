@@ -31,7 +31,8 @@ signals:
 public slots:
     void test(int dur);//for test setting duration
     void setDirectory(QString directory);
-    int  getControlLevel() const;
+    void clearPlaylist();
+    int  getControlLevel();
     void setControlLevel(int _controlLevel);
     void setDuration(int duration);
     void nextTrack();
